@@ -1,5 +1,6 @@
 # vue-appsync-study
 **Build both the server side(1) and the client side(2) from scratch.**
+[**Example Application for using vue-cli-plugin-appsync**](https://github.com/komushi/vue-cli-plugin-appsync)
 
 ## 1. AWS AppSync (GraphQL API Server Side)
 
@@ -253,7 +254,7 @@ query getBooksByGender{
 
 
 ## 2. GraphQL Client Side Vue Application
-**This is about how I created a Vue Application like this. In one minute!**
+**:rocket: This is about how I created a Vue Application like this. In one minute!**
 
 ### 2-1. Check vue-cli version
 :warning: Make sure you have vue-cli 3.x.x:
@@ -294,3 +295,7 @@ export default {
 ```
 npm run serve
 ```
+
+![Application Screenshot](https://rawgit.com/komushi/vue-appsync-study/master/image/app.png)
+
+![DynamoDB BookTable](https://rawgit.com/komushi/vue-appsync-study/master/image/dynamodb.png)
