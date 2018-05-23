@@ -1,6 +1,7 @@
 # vue-appsync-study
 **Build both the server side(1) and the client side(2) from scratch.**
-[**Example Application for using vue-cli-plugin-appsync**](https://github.com/komushi/vue-cli-plugin-appsync)
+
+**Example Application for using [vue-cli-plugin-appsync].(https://github.com/komushi/vue-cli-plugin-appsync)**
 
 ## 1. AWS AppSync (GraphQL API Server Side)
 
