@@ -296,6 +296,6 @@ export default {
 npm run serve
 ```
 
-![Application Screenshot](https://rawgit.com/komushi/vue-appsync-study/master/image/app.png)
+![Application Screenshot](images/app.png)
 
-![DynamoDB BookTable](https://rawgit.com/komushi/vue-appsync-study/master/image/dynamodb.png)
+![DynamoDB BookTable](images/dynamodb.png)
