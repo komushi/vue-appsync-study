@@ -1,5 +1,6 @@
 <template>
   <div id="app">
+		<app-sync-example></app-sync-example>
     <img src="./assets/logo.png">
     <HelloWorld msg="Welcome to Your Vue.js App"/>
   </div>
@@ -7,10 +8,12 @@
 
 <script>
 import HelloWorld from './components/HelloWorld.vue'
+import AppSyncExample from './components/AppSyncExample.vue'
 
 export default {
   name: 'app',
   components: {
+		AppSyncExample,
     HelloWorld
   }
 }
