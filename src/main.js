@@ -1,6 +1,6 @@
 import Vue from 'vue'
 import App from './App.vue'
-import { appSyncProvider } from './graphql/config/vue-appsync'
+import { appSyncProvider } from './vue-appsync'
 
 Vue.config.productionTip = false
 

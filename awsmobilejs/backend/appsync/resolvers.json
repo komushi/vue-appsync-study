@@ -8,24 +8,17 @@
     },
     {
         "typeName": "Mutation",
-        "fieldName": "deleteBook",
-        "dataSourceName": "BookTable",
-        "requestMappingTemplate": "{managed-by-awsmobile-cli}:Mutation.deleteBook.request",
-        "responseMappingTemplate": "{managed-by-awsmobile-cli}:Mutation.deleteBook.response"
-    },
-    {
-        "typeName": "Mutation",
         "fieldName": "updateBook",
         "dataSourceName": "BookTable",
         "requestMappingTemplate": "{managed-by-awsmobile-cli}:Mutation.updateBook.request",
         "responseMappingTemplate": "{managed-by-awsmobile-cli}:Mutation.updateBook.response"
     },
     {
-        "typeName": "Query",
-        "fieldName": "getAllBooks",
+        "typeName": "Mutation",
+        "fieldName": "deleteBook",
         "dataSourceName": "BookTable",
-        "requestMappingTemplate": "{managed-by-awsmobile-cli}:Query.getAllBooks.request",
-        "responseMappingTemplate": "{managed-by-awsmobile-cli}:Query.getAllBooks.response"
+        "requestMappingTemplate": "{managed-by-awsmobile-cli}:Mutation.deleteBook.request",
+        "responseMappingTemplate": "{managed-by-awsmobile-cli}:Mutation.deleteBook.response"
     },
     {
         "typeName": "Query",
@@ -36,16 +29,24 @@
     },
     {
         "typeName": "Query",
-        "fieldName": "getBooksByGender",
-        "dataSourceName": "BookTable",
-        "requestMappingTemplate": "{managed-by-awsmobile-cli}:Query.getBooksByGender.request",
-        "responseMappingTemplate": "{managed-by-awsmobile-cli}:Query.getBooksByGender.response"
-    },
-    {
-        "typeName": "Query",
         "fieldName": "listBooks",
         "dataSourceName": "BookTable",
         "requestMappingTemplate": "{managed-by-awsmobile-cli}:Query.listBooks.request",
         "responseMappingTemplate": "{managed-by-awsmobile-cli}:Query.listBooks.response"
+    },
+    {
+        "typeName": "Query",
+        "fieldName": "getAllBooks",
+        "dataSourceName": "BookTable",
+        "requestMappingTemplate": "{managed-by-awsmobile-cli}:Query.getAllBooks.request",
+        "responseMappingTemplate": "{managed-by-awsmobile-cli}:Query.getAllBooks.response"
+    },
+    {
+        "typeName": "Query",
+        "fieldName": "getBooksByGender",
+        "dataSourceName": "BookTable",
+        "requestMappingTemplate": "{managed-by-awsmobile-cli}:Query.getBooksByGender.request",
+        "responseMappingTemplate": "{managed-by-awsmobile-cli}:Query.getBooksByGender.response"
     }
+
 ]

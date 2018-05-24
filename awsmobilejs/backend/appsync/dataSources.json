@@ -1,21 +1,21 @@
 {
     "dataSources": [
         {
+            "name": "Local",
+            "description": null,
+            "type": "NONE",
+            "serviceRoleArn": "{managed-by-awsmobile-cli}"
+        },
+        {
             "name": "BookTable",
             "description": null,
             "type": "AMAZON_DYNAMODB",
             "serviceRoleArn": "{managed-by-awsmobile-cli}",
             "dynamodbConfig": {
-                "tableName": "BookTable-joQ4XwWs",
+                "tableName": "BookTable-{suffix}",
                 "awsRegion": "ap-northeast-1",
                 "useCallerCredentials": false
             }
-        },
-        {
-            "name": "Local",
-            "description": null,
-            "type": "NONE",
-            "serviceRoleArn": "{managed-by-awsmobile-cli}"
         }
     ],
     "tables": [
@@ -26,7 +26,7 @@
                     "AttributeType": "S"
                 }
             ],
-            "TableName": "BookTable-joQ4XwWs",
+            "TableName": "BookTable-{suffix}",
             "KeySchema": [
                 {
                     "AttributeName": "title",
