@@ -1,12 +1,6 @@
 {
     "dataSources": [
         {
-            "name": "Local",
-            "description": null,
-            "type": "NONE",
-            "serviceRoleArn": "{managed-by-awsmobile-cli}"
-        },
-        {
             "name": "BookTable",
             "description": null,
             "type": "AMAZON_DYNAMODB",
