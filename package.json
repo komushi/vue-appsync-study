@@ -8,6 +8,7 @@
     "lint": "vue-cli-service lint"
   },
   "dependencies": {
+    "aws-amplify": "^0.4.1",
     "aws-appsync": "^1.0.20",
     "graphql": "^0.13.2",
     "vue": "^2.5.16",

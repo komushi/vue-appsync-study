@@ -1,4 +1,10 @@
 {
-    "name": "{managed-by-awsmobile-cli}",
-    "authenticationType": "API_KEY"
+    "name": "vue-appsync-study-2018-05-24-19-49-10",
+    "authenticationType": "AMAZON_COGNITO_USER_POOLS",
+    "userPoolConfig": {
+        "userPoolId": "ap-northeast-1_gAE3zbCiv",
+        "awsRegion": "ap-northeast-1",
+        "defaultAction": "ALLOW",
+        "appIdClientRegex": null
+    }
 }
