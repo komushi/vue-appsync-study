@@ -1,11 +1,95 @@
 # vue-appsync-study
-**Build both the server side(1) and the client side(2) from scratch.**
+**Example to create a vue application to use the AWS AppSync backend**
 
-**Example Application for using [vue-cli-plugin-appsync].(https://github.com/komushi/vue-cli-plugin-appsync)**
+* Application Screenshot
+![Application Screenshot](images/app.png)
 
-## 1. AWS AppSync (GraphQL API Server Side)
+* DynamoDB back-end
+![DynamoDB BookTable](images/dynamodb.png)
 
-### 1-1. Default GraphQL API
+# Option I. Streamlined approach by using [vue-cli-plugin-appsync](https://github.com/komushi/vue-cli-plugin-appsync) and [AWS Mobile CLI](https://aws.github.io/aws-amplify/media/cli_guide)
+**:rocket: This is how I created a Vue Application like this repo. In one minute!**
+
+## 1. Setup AppSync and Vue Application together
+### 1-1. Check vue-cli version
+:warning: Make sure you have vue-cli 3.x.x:
+
+```
+vue --version
+```
+
+### 1-2. Check AWS Mobile CLI version:
+:warning: Make sure you have awsmobile-cli 1.1.x:
+
+```
+awsmobile -V
+```
+
+### 1-3. Create a vue project
+```
+vue create my-vue-appsync-app
+```
+
+### 1-4. Apply the AppSync plugin
+**Navigate to the newly created project folder and add the cli plugin:**
+**After adding the plugin check the folder structure and the files, it should be the same with this repository.
+```
+cd my-vue-appsync-app
+vue add appsync
+```
+
+### 1-5. Check the AppSync settings example at awsmobilejs/backend/appsync
+**Create your own AppSync settings for your own app in the future.**
+```
+./awsmobilejs/
+└── backend
+    ├── appsync
+    │   ├── apiKeys.json
+    │   ├── dataSources.json
+    │   ├── graphqlApi.json
+    │   ├── resolver-mappings
+    │   │   ├── Mutation.createBook.request
+    │   │   ├── Mutation.createBook.response
+    │   │   ├── Mutation.deleteBook.request
+    │   │   ├── Mutation.deleteBook.response
+    │   │   ├── Mutation.updateBook.request
+    │   │   ├── Mutation.updateBook.response
+    │   │   ├── Query.getAllBooks.request
+    │   │   ├── Query.getAllBooks.response
+    │   │   ├── Query.getBook.request
+    │   │   ├── Query.getBook.response
+    │   │   ├── Query.getBooksByGender.request
+    │   │   ├── Query.getBooksByGender.response
+    │   │   ├── Query.listBooks.request
+    │   │   └── Query.listBooks.response
+    │   ├── resolvers.json
+    │   └── schema.graphql
+    └── mobile-hub-project.yml
+```
+
+### 1-6. Create the backend
+**Check the MobileHub Backend, the AppSync Backend & the DynamoDB Table after**
+```
+cd my-vue-appsync-app
+awsmobile init --yes
+```
+
+### 1-7. Start your app
+
+```
+npm run serve
+```
+
+*Or*
+
+```
+awsmobile run
+```
+
+# Option II. Maunal Approach
+## 2. Manually Setup AWS AppSync (GraphQL API Server Side) with AWS management console
+
+### 2-1. Default GraphQL API
 ```
 type Query { 
     getAllBooks: [Book]
@@ -28,8 +112,8 @@ schema {
 }
 ```
 
-### 1-2. After applying to AWS AppSync with a DynamoDB Table BookTable created
-**Need to update CreateBookInput and UpdateBookInput for gender (enum type)**
+### 2-2. After applying to AWS AppSync with a DynamoDB Table BookTable created
+**Need to mannualy update CreateBookInput and UpdateBookInput for gender (enum type)**
 ```
 type Book {
     title: String!
@@ -92,7 +176,7 @@ schema {
 }
 ```
 
-### 1-3. Try Mutation createBook to add some data
+### 2-3. Try Mutation createBook to add some data
 
 ```
 mutation create{
@@ -133,7 +217,7 @@ mutation create{
 | 嘻游记     | Male       | 无承恩      |
 | 原始物語   | Female     | 姿势部      |
 
-### 1-4. Try Query getBook
+### 2-4. Try Query getBook
 
 ```
 query getBook{
@@ -157,7 +241,7 @@ query getBook{
 }
 ```
 
-### 1-5. Add Resolver for Query getAllBooks and test
+### 2-5. Add Resolver for Query getAllBooks and test
 * Data source name: BookTable
 * Request mapping template
 ```
@@ -202,7 +286,7 @@ query getAllBooks{
 }
 ```
 
-### 1-6. Add Resolver for Query.getBooksByGender
+### 2-6. Add Resolver for Query.getBooksByGender
 * Data source name: BookTable
 * Request mapping template
 ```
@@ -253,50 +337,47 @@ query getBooksByGender{
 }
 ```
 
+## 3. Manually Setup Vue Application
 
-## 2. GraphQL Client Side Vue Application
-**:rocket: This is about how I created a Vue Application like this. In one minute!**
-
-### 2-1. Check vue-cli version
+### 3-1. Check vue-cli version
 :warning: Make sure you have vue-cli 3.x.x:
 
 ```
 vue --version
 ```
 
-### 2-2. Create vue a project
+### 3-2. Create a vue project
 ```
-vue create vue-appsync-study
+vue create my-vue-appsync-app
 ```
 
-### 2-3. Apply the AppSync plugin
-Navigate to the newly created project folder and add the cli plugin:
+### 3-3. Apply the AppSync plugin
+**Navigate to the newly created project folder and add the cli plugin:**
 
 ```
-cd vue-appsync-study
+cd my-vue-appsync-app
 vue add appsync
 ```
 
-### 2-4. Modify AppSync.js
-
-Download AppSync.js for Web from AWS AppSync Management Console:
-Overwrite src/graphql/config/AppSync.js
+### 3-4. Modify aws-exports.js
+**Edit or create src/aws-exports.js.**
+**All the AppSync info can be retrieved at AWS AppSync management console.**
 ```
-export default {
-    "graphqlEndpoint": "https://1234567890.appsync-api.ap-northeast-1.amazonaws.com/graphql",
-    "region": "ap-northeast-1",
-    "authenticationType": "API_KEY",
-    "apiKey": "apikey1234567890"
+const awsmobile = {
+    'aws_appsync_graphqlEndpoint': 'https://<your_appsync_endpoint>.appsync-api.ap-northeast-1.amazonaws.com/graphql',
+    'aws_appsync_region': '<your_region>',
+    'aws_appsync_authenticationType': 'API_KEY',
+    'aws_appsync_apiKey': '<your_api_key>',
 }
+
+export default awsmobile;
 ```
 
-
-### 2-5. Start your app
-
+### 3-5. Start your app
 ```
 npm run serve
 ```
 
-![Application Screenshot](images/app.png)
 
-![DynamoDB BookTable](images/dynamodb.png)
+
+
