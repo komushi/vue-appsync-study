@@ -1,4 +1,10 @@
 {
     "name": "vue-appsync-study-2018-05-29-07-45-43",
-    "authenticationType": "API_KEY"
+    "authenticationType": "AMAZON_COGNITO_USER_POOLS",
+    "userPoolConfig": {
+        "userPoolId": "ap-northeast-1_FREJvNcNS",
+        "awsRegion": "ap-northeast-1",
+        "defaultAction": "ALLOW",
+        "appIdClientRegex": null
+    }
 }

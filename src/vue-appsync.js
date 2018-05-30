@@ -14,8 +14,8 @@ const config = {
   region: awsmobile.aws_appsync_region,
   auth: {
     type: awsmobile.aws_appsync_authenticationType,
-    apiKey: awsmobile.aws_appsync_apiKey,
-    // jwtToken: async () => (await Auth.currentSession()).getAccessToken().getJwtToken()
+    // apiKey: awsmobile.aws_appsync_apiKey,
+    jwtToken: async () => (await Auth.currentSession()).getAccessToken().getJwtToken()
   }
 };
 

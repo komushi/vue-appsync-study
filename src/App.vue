@@ -18,7 +18,7 @@
 // import AppSyncExample from './components/AppSyncExample.vue'
 
 export default {
-  name: 'app',
+  name: 'app'
   // data: () => ({ hydrated: false }),
   // async mounted() {
   //   await this.$apollo.provider.defaultClient.hydrated();
