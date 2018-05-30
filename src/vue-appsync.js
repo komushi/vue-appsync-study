@@ -4,6 +4,17 @@ import AWSAppSyncClient from 'aws-appsync';
 import awsmobile from './aws-exports';
 import Amplify, { Auth, Logger } from 'aws-amplify';
 
+
+Amplify.configure(awsmobile)
+Amplify.Logger.LOG_LEVEL = 'DEBUG'
+
+const logger = new Logger('main')
+
+Auth.currentUserInfo()
+  .then(user => logger.debug(user))
+  .catch(err => logger.debug(err))
+
+
 // Install the vue plugin
 Vue.use(VueApollo);
 
