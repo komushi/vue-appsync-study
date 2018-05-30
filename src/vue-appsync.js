@@ -1,10 +1,12 @@
-import Vue from 'vue'
-import VueApollo from 'vue-apollo'
-import AWSAppSyncClient from 'aws-appsync'
-import awsmobile from './aws-exports'
+import Vue from 'vue';
+import VueApollo from 'vue-apollo';
+import AWSAppSyncClient from 'aws-appsync';
+import awsmobile from './aws-exports';
+import Amplify, { Auth, Logger } from 'aws-amplify';
 
 // Install the vue plugin
 Vue.use(VueApollo);
+
 
 // Config
 const config = {
@@ -13,6 +15,7 @@ const config = {
   auth: {
     type: awsmobile.aws_appsync_authenticationType,
     apiKey: awsmobile.aws_appsync_apiKey,
+    // jwtToken: async () => (await Auth.currentSession()).getAccessToken().getJwtToken()
   }
 };
 
