@@ -1,6 +1,6 @@
 import Vue from 'vue'
 import Router from 'vue-router'
-import { AppSyncExample, HelloWorld, Test } from '@/components'
+import { AppSyncExample, HelloWorld } from '@/components'
 
 import { AuthRouter, AuthFilter } from '../amplify'
 
@@ -17,11 +17,6 @@ const router = new Router({
       path: '/appsync',
       name: 'AppSyncExample',
       component: AppSyncExample
-    },
-    {
-      path: '/test',
-      name: 'Test',
-      component: Test
     },
     AuthRouter
   ]

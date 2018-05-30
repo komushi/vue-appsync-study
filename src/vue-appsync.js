@@ -4,20 +4,18 @@ import AWSAppSyncClient from 'aws-appsync';
 import awsmobile from './aws-exports';
 import Amplify, { Auth, Logger } from 'aws-amplify';
 
-
+// Initialize and Configure Amplify
 Amplify.configure(awsmobile)
+
+// Enable Logger
 Amplify.Logger.LOG_LEVEL = 'DEBUG'
-
 const logger = new Logger('main')
-
 Auth.currentUserInfo()
   .then(user => logger.debug(user))
   .catch(err => logger.debug(err))
 
-
 // Install the vue plugin
 Vue.use(VueApollo);
-
 
 // Config
 const config = {
@@ -33,7 +31,7 @@ const config = {
 const options = {
   defaultOptions: {
     watchQuery: {
-      fetchPolicy: 'cache-and-network',
+      fetchPolicy: 'cache-and-network'
     }
   }
 };
