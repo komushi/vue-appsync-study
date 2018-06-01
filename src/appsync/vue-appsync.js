@@ -1,7 +1,9 @@
 import Vue from 'vue';
 import VueApollo from 'vue-apollo';
 import AWSAppSyncClient from 'aws-appsync';
-import awsmobile from './aws-exports';
+import awsmobile from '@/aws-exports';
+
+/*
 import Amplify, { Auth, Logger } from 'aws-amplify';
 
 // Initialize and Configure Amplify
@@ -13,6 +15,7 @@ const logger = new Logger('main')
 Auth.currentUserInfo()
   .then(user => logger.debug(user))
   .catch(err => logger.debug(err))
+*/
 
 // Install the vue plugin
 Vue.use(VueApollo);
@@ -23,8 +26,8 @@ const config = {
   region: awsmobile.aws_appsync_region,
   auth: {
     type: awsmobile.aws_appsync_authenticationType,
-    // apiKey: awsmobile.aws_appsync_apiKey,
-    jwtToken: async () => (await Auth.currentSession()).getAccessToken().getJwtToken()
+    apiKey: awsmobile.aws_appsync_apiKey,
+    // jwtToken: async () => (await Auth.currentSession()).getAccessToken().getJwtToken()
   }
 };
 
@@ -37,9 +40,9 @@ const options = {
 };
 
 // Create App Sync client
-export const appSyncClient = new AWSAppSyncClient(config, options);
+export const AppSyncClient = new AWSAppSyncClient(config, options);
 
 // Create vue apollo provider
-export const appSyncProvider = new VueApollo({
-  defaultClient: appSyncClient
+export const AppSyncProvider = new VueApollo({
+  defaultClient: AppSyncClient
 });

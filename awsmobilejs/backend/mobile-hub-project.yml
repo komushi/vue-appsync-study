@@ -21,12 +21,12 @@ features:
           password-policy: !com.amazonaws.mobilehub.ConvertibleMap 
             min-length: '8'
             require-lower-case: true
-            require-numbers: false
+            require-numbers: true
             require-symbols: false
             require-upper-case: false
   user-files: !com.amazonaws.mobilehub.v0.UserFiles 
     attributes:
       enabled: true
       wildcard-cors-policy: true
-name: vue-appsync-study-2018-05-29-07-45-43
+name: vue-appsync-study
 region: ap-northeast-1
