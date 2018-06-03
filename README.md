@@ -25,17 +25,47 @@ vue --version
 awsmobile -V
 ```
 
-### 1-3. Create a vue project
+### 1-3. Configure AWS Mobile CLI:
+**Choose your region**
+
 ```
-vue create my-vue-appsync-app
+$awsmobile configure aws
+
+configure aws
+? accessKeyId:  <accessKeyId>
+? secretAccessKey:  <secretAccessKey>
+? region:  ap-northeast-1
 ```
 
-### 1-4. Apply the AppSync plugin
-**Navigate to the newly created project folder and add the cli plugin:**
-**After adding the plugin check the folder structure and the files, it should be the same with this repository.
+### 1-4. Create a vue project
+Create a project with vue-cli 3.x:
+**Use Babel, Router, Linter with default settings**
 ```
-cd my-vue-appsync-app
+vue create my-new-app
+
+Vue CLI v3.0.0-beta.15
+? Please pick a preset: Manually select features
+? Check the features needed for your project: 
+ ◉ Babel
+ ◯ TypeScript
+ ◯ Progressive Web App (PWA) Support
+❯◉ Router
+ ◯ Vuex
+ ◯ CSS Pre-processors
+ ◉ Linter / Formatter
+ ◯ Unit Testing
+ ◯ E2E Testing
+```
+
+### 1-5. Apply the AppSync plugin
+Navigate to the newly created project folder and add the cli plugin:
+
+```
+cd my-new-app
 vue add appsync
+
+? Add an AppSync Example page? Yes
+? What is the authentication type? API_KEY
 ```
 
 ### 1-5. Check the AppSync settings example at awsmobilejs/backend/appsync

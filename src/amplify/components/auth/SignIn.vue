@@ -72,7 +72,7 @@ export default {
     }
   },
   methods: {
-    signIn: function(event) {
+    signIn: function() {
       const that = this
       Auth.signIn(this.username, this.password)
         .then(user => {

@@ -57,7 +57,7 @@ export default {
     user() { return AmplifyStore.state.amplify.user }
   },
   methods: {
-    confirm: function(event) {
+    confirm: function() {
         Auth.confirmSignUp(this.username, this.code)
             .then(() => this.$router.push('/'))
             .catch(err => this.setError(err));

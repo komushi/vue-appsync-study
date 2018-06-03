@@ -40,7 +40,7 @@ export default {
     user() { return AmplifyStore.state.user }
   },
   methods: {
-    signOut: function(event) {
+    signOut: function() {
         Auth.signOut()
             .then(data => {
                 logger.debug('sign out success', data);

@@ -62,7 +62,7 @@ export default {
     user() { return AmplifyStore.state.user }
   },
   methods: {
-    signUp: function(event) {
+    signUp: function() {
         Auth.signUp(this.username, this.password, this.email, this.phone_number)
             .then(data => {
                 logger.debug('sign up success', data);

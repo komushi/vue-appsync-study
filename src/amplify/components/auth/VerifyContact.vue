@@ -49,7 +49,7 @@
 </template>
 
 <script>
-import { Auth, Logger, JS } from 'aws-amplify'
+import { Auth, Logger } from 'aws-amplify'
 import AmplifyStore from '../../AmplifyStore'
 import AmplifyTheme from '../../AmplifyTheme'
 

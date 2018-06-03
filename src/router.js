@@ -3,8 +3,7 @@ import Router from 'vue-router'
 import Home from './views/Home.vue'
 import About from './views/About.vue'
 import { AppSyncRouter } from '@/appsync'
-
-// import { AuthRouter, AuthFilter } from '@/amplify'
+import { AuthRouter, AuthFilter } from '@/amplify'
 
 Vue.use(Router)
 
@@ -21,10 +20,10 @@ const router = new Router({
       component: About
     },
     AppSyncRouter,
-    // AuthRouter
+    AuthRouter
   ]
 })
 
-// router.beforeEach(AuthFilter);
+router.beforeEach(AuthFilter);
 
 export default router
