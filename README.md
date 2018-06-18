@@ -121,7 +121,7 @@ awsmobile run
 # Option II. Maunal Approach
 ## 2. Manually Setup AWS AppSync (GraphQL API Server Side) with AWS management console
 
-### 2-1. Default GraphQL API
+### 2-1. Save to a new API's Schema with the following definition
 ```
 type Query { 
     getAllBooks: [Book]
@@ -144,71 +144,78 @@ schema {
 }
 ```
 
-### 2-2. After applying to AWS AppSync with a DynamoDB Table BookTable created
-**Need to mannualy update CreateBookInput and UpdateBookInput for gender (enum type)**
+### 2-2. Create a DynamoDB Resource 
+**Click the "Create Resouces" button**
+* Select a type: Book
+* Table name: BookTable
+* Primary Key: title
+* Sort Key: None
+* Additional Indexes: None
+
+### 2-3. Manually update CreateBookInput and UpdateBookInput for gender (enum type)
 ```
 type Book {
-    title: String!
-    gender: Gender
-    author: String
+  title: String!
+  gender: Gender
+  author: String
 }
 
 type BookConnection {
-    items: [Book]
-    nextToken: String
+  items: [Book]
+  nextToken: String
 }
 
 input CreateBookInput {
-    title: String!
-    gender: Gender
-    author: String
+  title: String!
+  author: String
+  gender: Gender
 }
 
 input DeleteBookInput {
-    title: String!
+  title: String!
 }
 
 enum Gender {
-    Male
-    Female
+  Male
+  Female
 }
 
 type Mutation {
-    createBook(input: CreateBookInput!): Book
-    updateBook(input: UpdateBookInput!): Book
-    deleteBook(input: DeleteBookInput!): Book
+  createBook(input: CreateBookInput!): Book
+  updateBook(input: UpdateBookInput!): Book
+  deleteBook(input: DeleteBookInput!): Book
 }
 
 type Query {
-    getAllBooks: [Book]
-    getBooksByGender(gender: Gender): [Book]
-    getBook(title: String!): Book
-    listBooks(first: Int, after: String): BookConnection
+  getAllBooks: [Book]
+  getBooksByGender(gender: Gender): [Book]
+  getBook(title: String!): Book
+  listBooks(first: Int, after: String): BookConnection
 }
 
 type Subscription {
-    onCreateBook(title: String, author: String): Book
-        @aws_subscribe(mutations: ["createBook"])
-    onUpdateBook(title: String, author: String): Book
-        @aws_subscribe(mutations: ["updateBook"])
-    onDeleteBook(title: String, author: String): Book
-        @aws_subscribe(mutations: ["deleteBook"])
+  onCreateBook(title: String, author: String): Book
+    @aws_subscribe(mutations: ["createBook"])
+  onUpdateBook(title: String, author: String): Book
+    @aws_subscribe(mutations: ["updateBook"])
+  onDeleteBook(title: String, author: String): Book
+    @aws_subscribe(mutations: ["deleteBook"])
 }
 
 input UpdateBookInput {
-    title: String!
-    gender: Gender
-    author: String
+  title: String!
+  author: String
+  gender: Gender
 }
 
 schema {
-    query: Query
-    mutation: Mutation
-    subscription: Subscription
+  query: Query
+  mutation: Mutation
+  subscription: Subscription
 }
 ```
 
-### 2-3. Try Mutation createBook to add some data
+### 2-4. Try Mutation createBook to add some data
 
 ```
 mutation create{
@@ -249,7 +256,7 @@ mutation create{
 | 嘻游记     | Male       | 无承恩      |
 | 原始物語   | Female     | 姿势部      |
 
-### 2-4. Try Query getBook
+### 2-5. Try Query getBook
 
 ```
 query getBook{
@@ -273,16 +280,17 @@ query getBook{
 }
 ```
 
-### 2-5. Add Resolver for Query getAllBooks and test
+### 2-6. Add Resolver for Query getAllBooks and test
+**Click the 'Attach Resolver' button of the field Query.getAllBooks**
 * Data source name: BookTable
-* Request mapping template
+* Request mapping template:
 ```
 {
     "version": "2017-02-28",
     "operation": "Scan"
 }
 ```
-* Response mapping template
+* Response mapping template:
 ```
 $utils.toJson($context.result.items)
 ```
@@ -318,9 +326,9 @@ query getAllBooks{
 }
 ```
 
-### 2-6. Add Resolver for Query.getBooksByGender
+### 2-7. Add Resolver for Query.getBooksByGender
 * Data source name: BookTable
-* Request mapping template
+* Request mapping template:
 ```
 {
     "version" : "2017-02-28",
@@ -333,7 +341,7 @@ query getAllBooks{
     }
 }
 ```
-* Response mapping template
+* Response mapping template:
 ```
 $utils.toJson($context.result.items)
 ```
