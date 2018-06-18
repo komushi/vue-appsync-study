@@ -7,7 +7,7 @@
             "serviceRoleArn": "{managed-by-awsmobile-cli}",
             "dynamodbConfig": {
                 "tableName": "BookTable-{suffix}",
-                "awsRegion": "ap-northeast-1",
+				"awsRegion": "ap-northeast-1",
                 "useCallerCredentials": false
             }
         }
@@ -31,7 +31,7 @@
                 "ReadCapacityUnits": 5,
                 "WriteCapacityUnits": 5
             },
-            "Region": "ap-northeast-1"
+			"Region": "ap-northeast-1"
         }
     ]
 }

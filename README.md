@@ -65,7 +65,9 @@ cd my-new-app
 vue add appsync
 
 ? Add an AppSync Example page? Yes
+? What is the datasource type? AMAZON_DYNAMODB
 ? What is the authentication type? API_KEY
+? Deploy the AWS AppSync and AWS Mobile Hub Backends? Yes
 ```
 
 ### 1-5. Check the AppSync settings example at awsmobilejs/backend/appsync
@@ -100,7 +102,7 @@ vue add appsync
 ### 1-6. Create the backend
 **Check the MobileHub Backend, the AppSync Backend & the DynamoDB Table after**
 ```
-cd my-vue-appsync-app
+cd my-new-app
 awsmobile init --yes
 ```
 
@@ -128,7 +130,7 @@ type Query {
 
 type Book { 
     title: String!
-    gender: Gender!
+    gender: Gender
     author: String
 }
 
@@ -147,7 +149,7 @@ schema {
 ```
 type Book {
     title: String!
-    gender: Gender!
+    gender: Gender
     author: String
 }
 
@@ -158,7 +160,7 @@ type BookConnection {
 
 input CreateBookInput {
     title: String!
-    gender: Gender!
+    gender: Gender
     author: String
 }
 
@@ -195,7 +197,7 @@ type Subscription {
 
 input UpdateBookInput {
     title: String!
-    gender: Gender!
+    gender: Gender
     author: String
 }
 
@@ -378,15 +380,33 @@ vue --version
 
 ### 3-2. Create a vue project
 ```
-vue create my-vue-appsync-app
+vue create my-new-app
+
+Vue CLI v3.0.0-beta.15
+? Please pick a preset: Manually select features
+? Check the features needed for your project: 
+ ◉ Babel
+ ◯ TypeScript
+ ◯ Progressive Web App (PWA) Support
+❯◉ Router
+ ◯ Vuex
+ ◯ CSS Pre-processors
+ ◉ Linter / Formatter
+ ◯ Unit Testing
+ ◯ E2E Testing
 ```
 
 ### 3-3. Apply the AppSync plugin
 **Navigate to the newly created project folder and add the cli plugin:**
 
 ```
-cd my-vue-appsync-app
+cd my-new-app
 vue add appsync
+
+? Add an AppSync Example page? Yes
+? What is the datasource type? AMAZON_DYNAMODB
+? What is the authentication type? API_KEY
+? Deploy the AWS AppSync and AWS Mobile Hub Backends? Yes
 ```
 
 ### 3-4. Modify aws-exports.js
@@ -394,7 +414,7 @@ vue add appsync
 **All the AppSync info can be retrieved at AWS AppSync management console.**
 ```
 const awsmobile = {
-    'aws_appsync_graphqlEndpoint': 'https://<your_appsync_endpoint>.appsync-api.ap-northeast-1.amazonaws.com/graphql',
+    'aws_appsync_graphqlEndpoint': 'https://<your_appsync_endpoint>.appsync-api.<your_region>.amazonaws.com/graphql',
     'aws_appsync_region': '<your_region>',
     'aws_appsync_authenticationType': 'API_KEY',
     'aws_appsync_apiKey': '<your_api_key>',

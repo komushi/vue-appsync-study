@@ -100,7 +100,16 @@ export default {
       if (this.formValid) {
         this.$apollo.mutate({
           mutation: MUTATION_CREATE_BOOK,
-          variables: input
+          variables: input,
+          optimisticResponse: {
+            __typename: 'Mutation',
+            createBook: {
+              __typename: 'Book',
+              title: input.title,
+              gender: input.gender,
+              author: input.author
+            }
+          }
         })
 
         this.title = ''

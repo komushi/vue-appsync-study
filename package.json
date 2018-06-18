@@ -3,32 +3,26 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "serve": "vue-cli-service serve --open",
+    "serve": "vue-cli-service serve",
     "build": "vue-cli-service build",
     "lint": "vue-cli-service lint"
   },
   "dependencies": {
-    "aws-amplify": "^0.4.2",
+    "aws-amplify": "^0.4.1",
     "aws-appsync": "^1.0.20",
     "graphql": "^0.13.2",
     "vue": "^2.5.16",
     "vue-apollo": "^3.0.0-beta.10",
-    "vue-router": "^3.0.1",
-    "vuex": "^3.0.1"
+    "vue-router": "^3.0.1"
   },
   "devDependencies": {
-    "@vue/cli-plugin-babel": "^3.0.0-beta.11",
-    "@vue/cli-plugin-eslint": "^3.0.0-beta.11",
-    "@vue/cli-service": "^3.0.0-beta.11",
+    "@vue/cli-plugin-babel": "^3.0.0-rc.2",
+    "@vue/cli-plugin-eslint": "^3.0.0-rc.2",
+    "@vue/cli-service": "^3.0.0-rc.2",
     "eslint-plugin-graphql": "^2.1.0",
     "graphql-tag": "^2.9.0",
-    "vue-cli-plugin-appsync": "^0.2.6",
+    "vue-cli-plugin-appsync": "^0.3.1",
     "vue-template-compiler": "^2.5.16"
-  },
-  "babel": {
-    "presets": [
-      "@vue/app"
-    ]
   },
   "eslintConfig": {
     "root": true,
